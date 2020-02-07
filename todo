@@ -1,0 +1,10 @@
+
+
+- base layouts
+- container pages
+- stores
+- http
+- linter + eslint + prettier
+- husky hooks
+- i18n strings files for errors, titles etc
+

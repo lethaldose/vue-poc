@@ -3,9 +3,8 @@ export default [
     path: "/templates",
     name: "templates",
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
     },
-    component: () =>
-      import(/* webpackChunkName: "profile" */ "@/components/Templates.vue")
-  }
-];
+    component: () => import(/* webpackChunkName: "profile" */ "@/components/Templates.vue"),
+  },
+]

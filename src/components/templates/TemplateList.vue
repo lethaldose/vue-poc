@@ -8,9 +8,12 @@
 export default {
   name: "TemplateList",
   props: {
-    msg: String
-  }
-};
+    msg: {
+      type: String,
+      default: "Template List",
+    },
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

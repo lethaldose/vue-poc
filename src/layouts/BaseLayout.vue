@@ -1,7 +1,7 @@
 <script>
 export default {
-  name: "BaseLayout"
-};
+  name: "BaseLayout",
+}
 </script>
 
 <template>
