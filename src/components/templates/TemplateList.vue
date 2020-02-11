@@ -1,57 +1,47 @@
 <template>
   <v-container>
-    <v-row class="mb-4">
+    <v-row>
       <v-col>
-        <h1 class="display-1 mb-3">
+        <h1 class="display-1">
           Template list
         </h1>
       </v-col>
-      <v-col>
-        <v-text-field
-          v-model="searchQuery"
-          append-icon="mdi-magnify"
-          label="Search"
-          single-line
-          hide-details
-          @keyup.enter="onSearchQuery"
-        ></v-text-field>
+    </v-row>
+    <v-row>
+      <v-col cols="4">
+        <TemplateSearch @on-search-query="searchTemplates" />
       </v-col>
     </v-row>
-    <v-data-table :headers="headers" :items="templates" :items-per-page="5" class="elevation-2"></v-data-table>
+    <TemplateTable :templates="templates" />
   </v-container>
 </template>
 
 <script>
+import TemplateTable from "./TemplateTable.vue"
+import TemplateSearch from "./TemplateSearch.vue"
+import {mapState, mapActions} from "vuex"
+
 export default {
   name: "TemplateList",
-  props: {
-    templates: {
-      type: Array,
-      required: true,
-    },
+  components: {
+    TemplateTable,
+    TemplateSearch,
   },
-  data() {
-    return {
-      searchQuery: "",
-      headers: [
-        {
-          text: "Name",
-          align: "left",
-          value: "name",
-        },
-        {text: "Type", value: "type"},
-        {text: "Enabled", value: "enabled"},
-        {text: "Created At", value: "created"},
-      ],
-    }
+  computed: {
+    ...mapState("templates", {
+      templates: (state) => state.templates,
+    }),
+  },
+  async created() {
+    await this.getAllTemplates()
   },
   methods: {
-    onSearchQuery() {
-      this.$emit("on-search-query", {searchQuery: this.searchQuery})
+    ...mapActions("templates", ["getAllTemplates"]),
+    async searchTemplates({searchQuery}) {
+      await this.getAllTemplates(searchQuery)
     },
   },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus"></style>
