@@ -25,9 +25,9 @@ export default {
     async resetState(context) {
       context.commit("RESET_STATE")
     },
-    async getAllTemplates({commit}) {
+    async getAllTemplates({commit}, searchQuery) {
       // make api call to get templates
-      const templates = Template.fromList(templateFixture)
+      const templates = Template.randomList(templateFixture, searchQuery)
       commit("UPDATE_TEMPLATES", templates)
     },
     async setSelectedTemplate(context, selectedTemplate) {

@@ -1,10 +1,20 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col class="mb-4">
+    <v-row class="mb-4">
+      <v-col>
         <h1 class="display-1 mb-3">
           Template list
         </h1>
+      </v-col>
+      <v-col>
+        <v-text-field
+          v-model="searchQuery"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+          @keyup.enter="onSearchQuery"
+        ></v-text-field>
       </v-col>
     </v-row>
     <v-data-table :headers="headers" :items="templates" :items-per-page="5" class="elevation-2"></v-data-table>
@@ -22,6 +32,7 @@ export default {
   },
   data() {
     return {
+      searchQuery: "",
       headers: [
         {
           text: "Name",
@@ -33,6 +44,11 @@ export default {
         {text: "Created At", value: "created"},
       ],
     }
+  },
+  methods: {
+    onSearchQuery() {
+      this.$emit("on-search-query", {searchQuery: this.searchQuery})
+    },
   },
 }
 </script>

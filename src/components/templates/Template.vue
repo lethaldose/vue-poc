@@ -1,5 +1,5 @@
 <template>
-  <TemplateList :templates="templates" />
+  <TemplateList :templates="templates" @on-search-query="searchTemplates" />
 </template>
 
 <script>
@@ -16,11 +16,14 @@ export default {
       templates: (state) => state.templates,
     }),
   },
-  methods: {
-    ...mapActions("templates", ["getAllTemplates"]),
-  },
   async created() {
     await this.getAllTemplates()
+  },
+  methods: {
+    ...mapActions("templates", ["getAllTemplates"]),
+    async searchTemplates({searchQuery}) {
+      await this.getAllTemplates(searchQuery)
+    },
   },
 }
 </script>

@@ -30,7 +30,7 @@ export default [
     },
     type: "Email",
     enabled: true,
-    created: "2020-01-21T03:10:43.200Z",
+    created: "2020-01-14T03:10:43.200Z",
   },
   {
     id: "003",
@@ -43,5 +43,13 @@ export default [
     type: "SMS",
     enabled: true,
     created: "2020-02-11T03:10:43.200Z",
+  },
+  {
+    id: "004",
+    name: "Reminder to pay your balance",
+    Body: "Hi {{.FirstName}}, Please pay your balance {{.Balance}}. thanks",
+    type: "SMS",
+    enabled: false,
+    created: "2019-12-09T03:10:43.200Z",
   },
 ]
