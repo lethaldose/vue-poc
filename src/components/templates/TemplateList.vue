@@ -1,12 +1,13 @@
 <template>
   <v-container>
-    <v-row class="text-center">
+    <v-row>
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
+        <h1 class="display-1 mb-3">
           Template list
         </h1>
       </v-col>
     </v-row>
+    <v-data-table :headers="headers" :items="templates" :items-per-page="5" class="elevation-2"></v-data-table>
   </v-container>
 </template>
 
@@ -14,10 +15,24 @@
 export default {
   name: "TemplateList",
   props: {
-    msg: {
-      type: String,
-      default: "Template List",
+    templates: {
+      type: Array,
+      required: true,
     },
+  },
+  data() {
+    return {
+      headers: [
+        {
+          text: "Name",
+          align: "left",
+          value: "name",
+        },
+        {text: "Type", value: "type"},
+        {text: "Enabled", value: "enabled"},
+        {text: "Created At", value: "created"},
+      ],
+    }
   },
 }
 </script>

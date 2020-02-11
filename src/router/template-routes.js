@@ -1,10 +1,17 @@
+import TemplateList from "@/components/templates/TemplateList.vue"
+import Template from "@/components/templates/Template.vue"
+
 export default [
   {
-    path: "/templates",
+    path: "templates",
     name: "templates",
-    meta: {
-      requiresAuth: true,
-    },
-    component: () => import(/* webpackChunkName: "profile" */ "@/components/Templates.vue"),
+    component: Template,
+    children: [
+      {
+        path: "",
+        name: "template-list",
+        component: TemplateList,
+      },
+    ],
   },
 ]

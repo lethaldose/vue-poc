@@ -1,8 +1,8 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 import Home from "../components/home/Home.vue"
-import TemplateList from "@/components/templates/TemplateList.vue"
 import BaseLayout from "@/layouts/BaseLayout"
+import templateRoutes from "./template-routes"
 
 Vue.use(VueRouter)
 
@@ -17,11 +17,7 @@ const routes = [
         name: "home",
         component: Home,
       },
-      {
-        path: "templates",
-        name: "templates",
-        component: TemplateList,
-      },
+      ...templateRoutes,
     ],
   },
 ]

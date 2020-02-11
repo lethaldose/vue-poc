@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" mini-variant="true" expand-on-hover="true" app>
+  <v-navigation-drawer v-model="drawer" :mini-variant="true" :expand-on-hover="true" app>
     <v-list dense>
       <v-list-item link to="/">
         <v-list-item-action>
@@ -28,5 +28,10 @@
 <script>
 export default {
   name: "SideMenu",
+  data() {
+    return {
+      drawer: true,
+    }
+  },
 }
 </script>

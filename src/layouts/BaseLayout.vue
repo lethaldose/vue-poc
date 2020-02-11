@@ -1,7 +1,7 @@
 <template>
   <v-app :class="$style.container">
     <v-app-bar app color="primary" dark>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Content</v-toolbar-title>
     </v-app-bar>
 
     <SideMenu />
