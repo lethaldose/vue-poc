@@ -2,9 +2,11 @@
 
 - base layouts
 - container pages
+- use one of sass or stylus
 - stores
 - http
+- jest setup
 - linter + eslint + prettier
 - husky hooks
 - i18n strings files for errors, titles etc
-
+- logo icons
