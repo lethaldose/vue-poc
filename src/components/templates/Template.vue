@@ -4,7 +4,7 @@
 
 <script>
 import TemplateList from "./TemplateList"
-import Template from "@/models/template"
+import {mapState, mapActions} from "vuex"
 
 export default {
   name: "TemplateContainer",
@@ -12,9 +12,15 @@ export default {
     TemplateList,
   },
   computed: {
-    templates() {
-      return Template.getDummyList()
-    },
+    ...mapState("templates", {
+      templates: (state) => state.templates,
+    }),
+  },
+  methods: {
+    ...mapActions("templates", ["getAllTemplates"]),
+  },
+  async created() {
+    await this.getAllTemplates()
   },
 }
 </script>

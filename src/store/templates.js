@@ -1,7 +1,5 @@
-import {get} from "./http"
 import Template from "@/models/template"
-
-const templateEndPoint = ""
+import templateFixture from "@/data/template-fixture"
 
 export default {
   namespaced: true,
@@ -28,8 +26,8 @@ export default {
       context.commit("RESET_STATE")
     },
     async getAllTemplates({commit}) {
-      const response = await get(templateEndPoint)
-      const templates = Template.fromList(response.data.items)
+      // make api call to get templates
+      const templates = Template.fromList(templateFixture)
       commit("UPDATE_TEMPLATES", templates)
     },
     async setSelectedTemplate(context, selectedTemplate) {
