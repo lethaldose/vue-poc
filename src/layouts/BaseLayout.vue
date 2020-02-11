@@ -1,36 +1,10 @@
-<script>
-export default {
-  name: "BaseLayout",
-}
-</script>
-
 <template>
   <v-app :class="$style.container">
     <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app>
-      <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Templates</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <SideMenu />
 
     <v-content>
       <RouterView />
@@ -43,11 +17,13 @@ export default {
 </template>
 
 <script>
+import SideMenu from "./SideMenu"
+
 export default {
   name: "BaseLayout",
-  data: () => ({
-    drawer: null,
-  }),
+  components: {
+    SideMenu,
+  },
 }
 </script>
 
